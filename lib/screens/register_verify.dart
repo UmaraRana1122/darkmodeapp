@@ -4,7 +4,6 @@ import 'package:darkmodeapp/screens/register_screen.dart';
 import 'package:darkmodeapp/utils/main_color.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:pin_code_fields/pin_code_fields.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
@@ -21,7 +20,7 @@ class RegisterVerifyScreen extends StatefulWidget {
 class _RegisterVerifyScreenState extends State<RegisterVerifyScreen> {
   final formKey = GlobalKey<FormState>();
   int error = -1;
-   String currentText = "";
+  String currentText = "";
   int secondsRemaining = 30;
   bool enableResend = false;
   late Timer timer;
@@ -40,7 +39,7 @@ class _RegisterVerifyScreenState extends State<RegisterVerifyScreen> {
   //     });
   //   }
   // }
-   void starttimer() {
+  void starttimer() {
     timer = Timer.periodic(
         const Duration(
           seconds: 1,
@@ -139,7 +138,7 @@ class _RegisterVerifyScreenState extends State<RegisterVerifyScreen> {
                                     ),
                                   ),
                                   SizedBox(height: 1.5.h),
-                                   Form(
+                                  Form(
                                     key: formKey,
                                     child: PinCodeTextField(
                                       appContext: context,
