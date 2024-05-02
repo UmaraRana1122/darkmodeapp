@@ -3,7 +3,9 @@ import 'package:darkmodeapp/screens/home_screen.dart';
 import 'package:darkmodeapp/screens/register_otp.dart';
 import 'package:darkmodeapp/screens/register_password.dart';
 import 'package:darkmodeapp/screens/register_screen.dart';
+import 'package:darkmodeapp/screens/register_verify.dart';
 import 'package:darkmodeapp/screens/spalsh_screen.dart';
+import 'package:darkmodeapp/screens/splash1_screen.dart';
 import 'package:darkmodeapp/screens/welcome_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -25,7 +27,7 @@ class MyApp extends StatelessWidget {
           theme: ThemeDataStyle.light, // Light/Default mode styles
           darkTheme: ThemeDataStyle.dark,
           debugShowCheckedModeBanner: false,
-          home: RegisterOtpScreen(),
+          home: RegisterVerifyScreen(),
         );
       },
     );

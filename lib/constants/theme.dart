@@ -14,7 +14,7 @@ class ThemeDataStyle {
   static ThemeData dark = ThemeData(
     useMaterial3: true,
     brightness: Brightness.dark,
-    colorScheme: ColorScheme.dark(
+    colorScheme : ColorScheme.dark(
       background: Colors.grey.shade900,
       primary: Colors.deepPurple.shade500,
       secondary: Colors.deepPurple.shade700,
