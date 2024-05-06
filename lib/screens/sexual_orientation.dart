@@ -6,26 +6,25 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 
-class WorkoutScreen extends StatefulWidget {
-  const WorkoutScreen({
+class SexualOrientationScreen extends StatefulWidget {
+  const SexualOrientationScreen({
     super.key,
   });
 
   @override
-  State<WorkoutScreen> createState() => _WorkoutScreenState();
+  State<SexualOrientationScreen> createState() =>
+      _SexualOrientationScreenState();
 }
 
-class _WorkoutScreenState extends State<WorkoutScreen> {
+class _SexualOrientationScreenState extends State<SexualOrientationScreen> {
   String isChecked = "";
-  List<String> workoutList = <String>[
-    'Everyday',
-    'Often',
-    'Sometimes',
-    'Gym Rat',
-    'Occasionally',
-    'Never'
+  List<String> sexList = <String>[
+    'Straight',
+    'Gay',
+    'Bisexual',
+    'Other',
   ];
-  String workout = 'Everyday';
+  String sex = 'Straight';
 
   @override
   Widget build(BuildContext context) {
@@ -45,28 +44,35 @@ class _WorkoutScreenState extends State<WorkoutScreen> {
         bottom: false,
         child: Column(
           children: [
-            Align(
-                alignment: Alignment.topLeft,
-                child: Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 12),
-                  child: Icon(Icons.arrow_back_ios_new),
-                )),
-            Center(child: Image.asset("assets/icons/logo1.png")),
-            SizedBox(
-              height: 2.h,
-            ),
-            Text(
-              'Complete your Profile',
-              style: GoogleFonts.quicksand(
-                textStyle: TextStyle(
-                    color: Color(0xffffffff),
-                    fontWeight: FontWeight.w700,
-                    fontSize: 18.sp),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 10),
+              child: Row(
+                children: [
+                  Icon(Icons.arrow_back_ios_new),
+                  Expanded(
+                    child: Align(
+                      alignment: Alignment.center,
+                      child: Text(
+                        'Sexual Orientation',
+                        style: GoogleFonts.quicksand(
+                          textStyle: TextStyle(
+                            color: Color(0xffffffff),
+                            fontWeight: FontWeight.w600,
+                            fontSize: 18.sp,
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+                ],
               ),
             ),
-            SizedBox(
-              height: 4.h,
+            SizedBox(height: 2.h),
+            Image.asset(
+              "assets/logo/vividlogo.png",
+              height: 9.3.h,
             ),
+            SizedBox(height: 4.h),
             Stack(children: [
               Align(
                   alignment: Alignment.bottomCenter,
@@ -92,29 +98,19 @@ class _WorkoutScreenState extends State<WorkoutScreen> {
                               child: Column(
                                 children: [
                                   SizedBox(height: 2.h),
-                                  Text(
-                                    'Workout',
-                                    style: GoogleFonts.quicksand(
-                                      textStyle: TextStyle(
-                                          color: Color(0xffffffff),
-                                          fontWeight: FontWeight.w600,
-                                          fontSize: 17.sp),
-                                    ),
-                                  ),
-                                  SizedBox(height: 1.5.h),
                                   ListView.builder(
                                     physics:
                                         const NeverScrollableScrollPhysics(),
                                     shrinkWrap: true,
-                                    itemCount: workoutList.length,
+                                    itemCount: sexList.length,
                                     itemBuilder:
                                         (BuildContext context, int index) {
                                       final isSelected =
-                                          workoutList[index] == isChecked;
+                                          sexList[index] == isChecked;
                                       return GestureDetector(
                                         onTap: () {
                                           // Handle tap here
-                                          isChecked = workoutList[index];
+                                          isChecked = sexList[index];
                                           setState(() {});
                                         },
                                         child: Padding(
@@ -157,7 +153,7 @@ class _WorkoutScreenState extends State<WorkoutScreen> {
                                                         width:
                                                             8), // Add some space between icon and text
                                                     Text(
-                                                      workoutList[index],
+                                                      sexList[index],
                                                       style: TextStyle(
                                                         fontSize: 14,
                                                         fontWeight:
@@ -189,30 +185,7 @@ class _WorkoutScreenState extends State<WorkoutScreen> {
                             onTap: () {
                               // Get.to(DOBScreen());
                             },
-                            child: buttonWidget(.7.h, 20.7.w, "Next")),
-                        SizedBox(
-                          height: 1.h,
-                        ),
-                        Container(
-                          height: 6.h,
-                          width: 90.w,
-                          decoration: BoxDecoration(
-                            border: Border.all(color: Colors.grey),
-                            borderRadius: BorderRadius.circular(12),
-                          ),
-                          child: Center(
-                            child: Text(
-                              "Skip",
-                              style: GoogleFonts.quicksand(
-                                textStyle: TextStyle(
-                                  color: Colors.white,
-                                  fontWeight: FontWeight.w600,
-                                  fontSize: 17.sp,
-                                ),
-                              ),
-                            ),
-                          ),
-                        )
+                            child: buttonWidget(.7.h, 20.7.w, "Save")),
                       ]))),
             ])
           ],

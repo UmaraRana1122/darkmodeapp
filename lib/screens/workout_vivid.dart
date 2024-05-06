@@ -1,32 +1,31 @@
+import 'dart:async';
+
 import 'package:darkmodeapp/utils/main_color.dart';
 import 'package:darkmodeapp/widgets/button_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 
-class DietaryScreen extends StatefulWidget {
-  const DietaryScreen({
+class WorkoutVividScreen extends StatefulWidget {
+  const WorkoutVividScreen({
     super.key,
   });
 
   @override
-  State<DietaryScreen> createState() => _DietaryScreenState();
+  State<WorkoutVividScreen> createState() => _WorkoutVividScreenState();
 }
 
-class _DietaryScreenState extends State<DietaryScreen> {
+class _WorkoutVividScreenState extends State<WorkoutVividScreen> {
   String isChecked = "";
-  List<String> dietaryList = <String>[
-    "Vegan",
-    'Vegetarian',
-    'Pescatarian',
-    'Kosher',
-    'Halal',
-    'Carnivore',
-    'Omnivore',
-    'Other',
+  List<String> workoutList = <String>[
+    'Everyday',
+    'Often',
+    'Sometimes',
+    'Gym Rat',
+    'Occasionally',
+    'Never'
   ];
-
-  String goal = 'Vegan';
+  String workout = 'Everyday';
 
   @override
   Widget build(BuildContext context) {
@@ -46,34 +45,41 @@ class _DietaryScreenState extends State<DietaryScreen> {
         bottom: false,
         child: Column(
           children: [
-            Align(
-                alignment: Alignment.topLeft,
-                child: Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 12),
-                  child: Icon(Icons.arrow_back_ios_new),
-                )),
-            Center(child: Image.asset("assets/icons/logo1.png")),
-            SizedBox(
-              height: 2.h,
-            ),
-            Text(
-              'Complete your Profile',
-              style: GoogleFonts.quicksand(
-                textStyle: TextStyle(
-                    color: Color(0xffffffff),
-                    fontWeight: FontWeight.w700,
-                    fontSize: 18.sp),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 10),
+              child: Row(
+                children: [
+                  Icon(Icons.arrow_back_ios_new),
+                  Expanded(
+                    child: Align(
+                      alignment: Alignment.center,
+                      child: Text(
+                        'Workout',
+                        style: GoogleFonts.quicksand(
+                          textStyle: TextStyle(
+                            color: Color(0xffffffff),
+                            fontWeight: FontWeight.w600,
+                            fontSize: 18.sp,
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+                ],
               ),
             ),
-            SizedBox(
-              height: 4.h,
+            SizedBox(height: 2.h),
+            Image.asset(
+              "assets/logo/vividlogo.png",
+              height: 9.3.h,
             ),
+            SizedBox(height: 4.h),
             Stack(children: [
               Align(
                   alignment: Alignment.bottomCenter,
                   child: Container(
                       width: 100.w,
-                      height: 71.h,
+                      height: 75.h,
                       decoration: const BoxDecoration(
                           borderRadius: BorderRadius.only(
                             topLeft: Radius.circular(40),
@@ -89,39 +95,28 @@ class _DietaryScreenState extends State<DietaryScreen> {
                                   borderRadius: BorderRadius.circular(14),
                                   color: Color(0xff676767)),
                               child: Padding(
-                                padding: const EdgeInsets.symmetric(
-                                  horizontal: 15,
-                                ),
+                                padding:
+                                    const EdgeInsets.symmetric(horizontal: 15),
                                 child: Column(
                                   children: [
                                     SizedBox(height: 2.h),
-                                    Text(
-                                      'Dietary',
-                                      style: GoogleFonts.quicksand(
-                                        textStyle: TextStyle(
-                                            color: Color(0xffffffff),
-                                            fontWeight: FontWeight.w600,
-                                            fontSize: 17.sp),
-                                      ),
-                                    ),
-                                    SizedBox(height: 1.5.h),
                                     ListView.builder(
                                       physics:
                                           const NeverScrollableScrollPhysics(),
                                       shrinkWrap: true,
-                                      itemCount: dietaryList.length,
+                                      itemCount: workoutList.length,
                                       itemBuilder:
                                           (BuildContext context, int index) {
                                         final isSelected =
-                                            dietaryList[index] == isChecked;
+                                            workoutList[index] == isChecked;
                                         return GestureDetector(
                                           onTap: () {
                                             // Handle tap here
-                                            isChecked = dietaryList[index];
+                                            isChecked = workoutList[index];
                                             setState(() {});
                                           },
                                           child: Padding(
-                                            padding: const EdgeInsets.all(2.0),
+                                            padding: const EdgeInsets.all(3.0),
                                             child: Container(
                                               child: Card(
                                                 elevation: 0,
@@ -163,7 +158,7 @@ class _DietaryScreenState extends State<DietaryScreen> {
                                                           width:
                                                               8), // Add some space between icon and text
                                                       Text(
-                                                        dietaryList[index],
+                                                        workoutList[index],
                                                         style: TextStyle(
                                                           fontSize: 14,
                                                           fontWeight:
@@ -196,30 +191,7 @@ class _DietaryScreenState extends State<DietaryScreen> {
                               onTap: () {
                                 // Get.to(DOBScreen());
                               },
-                              child: buttonWidget(.7.h, 20.7.w, "Next")),
-                          SizedBox(
-                            height: 1.h,
-                          ),
-                          Container(
-                            height: 6.h,
-                            width: 90.w,
-                            decoration: BoxDecoration(
-                              border: Border.all(color: Colors.grey),
-                              borderRadius: BorderRadius.circular(12),
-                            ),
-                            child: Center(
-                              child: Text(
-                                "Skip",
-                                style: GoogleFonts.quicksand(
-                                  textStyle: TextStyle(
-                                    color: Colors.white,
-                                    fontWeight: FontWeight.w600,
-                                    fontSize: 17.sp,
-                                  ),
-                                ),
-                              ),
-                            ),
-                          )
+                              child: buttonWidget(.7.h, 20.7.w, "Save")),
                         ]),
                       ))),
             ])

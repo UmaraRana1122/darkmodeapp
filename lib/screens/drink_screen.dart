@@ -6,26 +6,23 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 
-class WorkoutScreen extends StatefulWidget {
-  const WorkoutScreen({
+class DrinkAlcoholScreen extends StatefulWidget {
+  const DrinkAlcoholScreen({
     super.key,
   });
 
   @override
-  State<WorkoutScreen> createState() => _WorkoutScreenState();
+  State<DrinkAlcoholScreen> createState() => _DrinkAlcoholScreenState();
 }
 
-class _WorkoutScreenState extends State<WorkoutScreen> {
+class _DrinkAlcoholScreenState extends State<DrinkAlcoholScreen> {
   String isChecked = "";
-  List<String> workoutList = <String>[
-    'Everyday',
+  List<String> drinkList = <String>[
+    'I do not drink',
+    'Socially',
     'Often',
-    'Sometimes',
-    'Gym Rat',
-    'Occasionally',
-    'Never'
   ];
-  String workout = 'Everyday';
+  String drink = 'I do not drink';
 
   @override
   Widget build(BuildContext context) {
@@ -45,28 +42,35 @@ class _WorkoutScreenState extends State<WorkoutScreen> {
         bottom: false,
         child: Column(
           children: [
-            Align(
-                alignment: Alignment.topLeft,
-                child: Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 12),
-                  child: Icon(Icons.arrow_back_ios_new),
-                )),
-            Center(child: Image.asset("assets/icons/logo1.png")),
-            SizedBox(
-              height: 2.h,
-            ),
-            Text(
-              'Complete your Profile',
-              style: GoogleFonts.quicksand(
-                textStyle: TextStyle(
-                    color: Color(0xffffffff),
-                    fontWeight: FontWeight.w700,
-                    fontSize: 18.sp),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 10),
+              child: Row(
+                children: [
+                  Icon(Icons.arrow_back_ios_new),
+                  Expanded(
+                    child: Align(
+                      alignment: Alignment.center,
+                      child: Text(
+                        'Alcohol',
+                        style: GoogleFonts.quicksand(
+                          textStyle: TextStyle(
+                            color: Color(0xffffffff),
+                            fontWeight: FontWeight.w600,
+                            fontSize: 18.sp,
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+                ],
               ),
             ),
-            SizedBox(
-              height: 4.h,
+            SizedBox(height: 2.h),
+            Image.asset(
+              "assets/logo/vividlogo.png",
+              height: 9.3.h,
             ),
+            SizedBox(height: 4.h),
             Stack(children: [
               Align(
                   alignment: Alignment.bottomCenter,
@@ -92,29 +96,19 @@ class _WorkoutScreenState extends State<WorkoutScreen> {
                               child: Column(
                                 children: [
                                   SizedBox(height: 2.h),
-                                  Text(
-                                    'Workout',
-                                    style: GoogleFonts.quicksand(
-                                      textStyle: TextStyle(
-                                          color: Color(0xffffffff),
-                                          fontWeight: FontWeight.w600,
-                                          fontSize: 17.sp),
-                                    ),
-                                  ),
-                                  SizedBox(height: 1.5.h),
                                   ListView.builder(
                                     physics:
                                         const NeverScrollableScrollPhysics(),
                                     shrinkWrap: true,
-                                    itemCount: workoutList.length,
+                                    itemCount: drinkList.length,
                                     itemBuilder:
                                         (BuildContext context, int index) {
                                       final isSelected =
-                                          workoutList[index] == isChecked;
+                                          drinkList[index] == isChecked;
                                       return GestureDetector(
                                         onTap: () {
                                           // Handle tap here
-                                          isChecked = workoutList[index];
+                                          isChecked = drinkList[index];
                                           setState(() {});
                                         },
                                         child: Padding(
@@ -157,7 +151,7 @@ class _WorkoutScreenState extends State<WorkoutScreen> {
                                                         width:
                                                             8), // Add some space between icon and text
                                                     Text(
-                                                      workoutList[index],
+                                                      drinkList[index],
                                                       style: TextStyle(
                                                         fontSize: 14,
                                                         fontWeight:
@@ -189,30 +183,7 @@ class _WorkoutScreenState extends State<WorkoutScreen> {
                             onTap: () {
                               // Get.to(DOBScreen());
                             },
-                            child: buttonWidget(.7.h, 20.7.w, "Next")),
-                        SizedBox(
-                          height: 1.h,
-                        ),
-                        Container(
-                          height: 6.h,
-                          width: 90.w,
-                          decoration: BoxDecoration(
-                            border: Border.all(color: Colors.grey),
-                            borderRadius: BorderRadius.circular(12),
-                          ),
-                          child: Center(
-                            child: Text(
-                              "Skip",
-                              style: GoogleFonts.quicksand(
-                                textStyle: TextStyle(
-                                  color: Colors.white,
-                                  fontWeight: FontWeight.w600,
-                                  fontSize: 17.sp,
-                                ),
-                              ),
-                            ),
-                          ),
-                        )
+                            child: buttonWidget(.7.h, 20.7.w, "Save")),
                       ]))),
             ])
           ],

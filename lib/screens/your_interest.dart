@@ -1,93 +1,104 @@
 import 'package:darkmodeapp/utils/main_color.dart';
 import 'package:darkmodeapp/widgets/button_widget.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 
-class DietaryScreen extends StatefulWidget {
-  const DietaryScreen({
+class YourInterestScreen extends StatefulWidget {
+  const YourInterestScreen({
     super.key,
   });
 
   @override
-  State<DietaryScreen> createState() => _DietaryScreenState();
+  State<YourInterestScreen> createState() => YourInterestScreenState();
 }
 
-class _DietaryScreenState extends State<DietaryScreen> {
-  String isChecked = "";
-  List<String> dietaryList = <String>[
-    "Vegan",
-    'Vegetarian',
-    'Pescatarian',
-    'Kosher',
-    'Halal',
-    'Carnivore',
-    'Omnivore',
-    'Other',
-  ];
+class YourInterestScreenState extends State<YourInterestScreen> {
+  Set<String> selectedGoals = {}; // Use Set to store multiple selected items
 
-  String goal = 'Vegan';
+  List<String> goalsList = <String>[
+    "New Friends",
+    'Fun',
+    'Crypto Friends',
+    'Short Term',
+    'Long Term',
+  ];
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        body: Container(
-      decoration: BoxDecoration(
-        gradient: LinearGradient(
+      body: Container(
+        decoration: BoxDecoration(
+          gradient: LinearGradient(
             begin: Alignment.topLeft,
             end: Alignment.bottomRight,
             colors: [
               Colors.grey.shade800,
               Colors.grey.shade900,
               Colors.grey.shade900,
-            ]),
-      ),
-      child: SafeArea(
-        bottom: false,
-        child: Column(
-          children: [
-            Align(
-                alignment: Alignment.topLeft,
-                child: Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 12),
-                  child: Icon(Icons.arrow_back_ios_new),
-                )),
-            Center(child: Image.asset("assets/icons/logo1.png")),
-            SizedBox(
-              height: 2.h,
-            ),
-            Text(
-              'Complete your Profile',
-              style: GoogleFonts.quicksand(
-                textStyle: TextStyle(
-                    color: Color(0xffffffff),
-                    fontWeight: FontWeight.w700,
-                    fontSize: 18.sp),
-              ),
-            ),
-            SizedBox(
-              height: 4.h,
-            ),
-            Stack(children: [
-              Align(
-                  alignment: Alignment.bottomCenter,
-                  child: Container(
-                      width: 100.w,
-                      height: 71.h,
-                      decoration: const BoxDecoration(
-                          borderRadius: BorderRadius.only(
-                            topLeft: Radius.circular(40),
-                            topRight: Radius.circular(40),
+            ],
+          ),
+        ),
+        child: SafeArea(
+          bottom: false,
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 10),
+                child: Row(
+                  children: [
+                    Icon(Icons.arrow_back_ios_new),
+                    Expanded(
+                      child: Align(
+                        alignment: Alignment.center,
+                        child: Text(
+                          'Relationship Goal',
+                          style: GoogleFonts.quicksand(
+                            textStyle: TextStyle(
+                              color: Color(0xffffffff),
+                              fontWeight: FontWeight.w600,
+                              fontSize: 18.sp,
+                            ),
                           ),
-                          color: Color(0xff5a5a5a)),
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+              SizedBox(height: 2.h),
+              Image.asset(
+                "assets/logo/vividlogo.png",
+                height: 9.3.h,
+              ),
+              SizedBox(height: 4.h),
+              Stack(
+                children: [
+                  Align(
+                    alignment: Alignment.bottomCenter,
+                    child: Container(
+                      width: 100.w,
+                      height: 75.h,
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.only(
+                          topLeft: Radius.circular(40),
+                          topRight: Radius.circular(40),
+                        ),
+                        color: Color(0xff5a5a5a),
+                      ),
                       child: SingleChildScrollView(
-                        child: Column(children: [
-                          SizedBox(height: 3.h),
-                          Container(
+                        child: Column(
+                          children: [
+                            SizedBox(height: 3.h),
+                            Container(
                               width: 90.w,
                               decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(14),
-                                  color: Color(0xff676767)),
+                                borderRadius: BorderRadius.circular(14),
+                                color: Color(0xff676767),
+                              ),
                               child: Padding(
                                 padding: const EdgeInsets.symmetric(
                                   horizontal: 15,
@@ -96,29 +107,37 @@ class _DietaryScreenState extends State<DietaryScreen> {
                                   children: [
                                     SizedBox(height: 2.h),
                                     Text(
-                                      'Dietary',
+                                      'What are your Relationship Goals?',
                                       style: GoogleFonts.quicksand(
                                         textStyle: TextStyle(
-                                            color: Color(0xffffffff),
-                                            fontWeight: FontWeight.w600,
-                                            fontSize: 17.sp),
+                                          color: Color(0xffffffff),
+                                          fontWeight: FontWeight.w600,
+                                          fontSize: 17.sp,
+                                        ),
                                       ),
                                     ),
                                     SizedBox(height: 1.5.h),
                                     ListView.builder(
-                                      physics:
-                                          const NeverScrollableScrollPhysics(),
+                                      physics: NeverScrollableScrollPhysics(),
                                       shrinkWrap: true,
-                                      itemCount: dietaryList.length,
+                                      itemCount: goalsList.length,
                                       itemBuilder:
                                           (BuildContext context, int index) {
                                         final isSelected =
-                                            dietaryList[index] == isChecked;
+                                            selectedGoals.contains(goalsList[
+                                                index]); // Check if the item is selected
                                         return GestureDetector(
                                           onTap: () {
-                                            // Handle tap here
-                                            isChecked = dietaryList[index];
-                                            setState(() {});
+                                            setState(() {
+                                              // Toggle selection
+                                              if (isSelected) {
+                                                selectedGoals
+                                                    .remove(goalsList[index]);
+                                              } else {
+                                                selectedGoals
+                                                    .add(goalsList[index]);
+                                              }
+                                            });
                                           },
                                           child: Padding(
                                             padding: const EdgeInsets.all(2.0),
@@ -126,9 +145,10 @@ class _DietaryScreenState extends State<DietaryScreen> {
                                               child: Card(
                                                 elevation: 0,
                                                 shape: RoundedRectangleBorder(
-                                                  side: const BorderSide(
-                                                      color: Color(0xffA3A3A3),
-                                                      width: .7),
+                                                  side: BorderSide(
+                                                    color: Color(0xffA3A3A3),
+                                                    width: .7,
+                                                  ),
                                                   borderRadius:
                                                       BorderRadius.circular(25),
                                                 ),
@@ -163,7 +183,7 @@ class _DietaryScreenState extends State<DietaryScreen> {
                                                           width:
                                                               8), // Add some space between icon and text
                                                       Text(
-                                                        dietaryList[index],
+                                                        goalsList[index],
                                                         style: TextStyle(
                                                           fontSize: 14,
                                                           fontWeight:
@@ -188,45 +208,27 @@ class _DietaryScreenState extends State<DietaryScreen> {
                                     ),
                                   ],
                                 ),
-                              )),
-                          SizedBox(
-                            height: 3.h,
-                          ),
-                          InkWell(
+                              ),
+                            ),
+                            SizedBox(height: 3.h),
+                            InkWell(
                               onTap: () {
                                 // Get.to(DOBScreen());
                               },
-                              child: buttonWidget(.7.h, 20.7.w, "Next")),
-                          SizedBox(
-                            height: 1.h,
-                          ),
-                          Container(
-                            height: 6.h,
-                            width: 90.w,
-                            decoration: BoxDecoration(
-                              border: Border.all(color: Colors.grey),
-                              borderRadius: BorderRadius.circular(12),
+                              child: buttonWidget(.7.h, 20.7.w, "Save"),
                             ),
-                            child: Center(
-                              child: Text(
-                                "Skip",
-                                style: GoogleFonts.quicksand(
-                                  textStyle: TextStyle(
-                                    color: Colors.white,
-                                    fontWeight: FontWeight.w600,
-                                    fontSize: 17.sp,
-                                  ),
-                                ),
-                              ),
-                            ),
-                          )
-                        ]),
-                      ))),
-            ])
-          ],
+                          ],
+                        ),
+                      ),
+                    ),
+                  ),
+                ],
+              )
+            ],
+          ),
         ),
       ),
-    ));
+    );
   }
 
   dialogSuccess(BuildContext context, String msg) {
@@ -234,9 +236,10 @@ class _DietaryScreenState extends State<DietaryScreen> {
       barrierDismissible: true,
       context: context,
       builder: (_) => AlertDialog(
-        shape: const RoundedRectangleBorder(
-            borderRadius: BorderRadius.all(Radius.circular(10.0))),
-        contentPadding: const EdgeInsets.only(top: 10.0),
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.all(Radius.circular(10.0)),
+        ),
+        contentPadding: EdgeInsets.only(top: 10.0),
         content: SizedBox(
           width: 300.0,
           child: SingleChildScrollView(
@@ -246,40 +249,33 @@ class _DietaryScreenState extends State<DietaryScreen> {
               mainAxisSize: MainAxisSize.min,
               children: <Widget>[
                 Container(
-                  margin: const EdgeInsets.all(20),
+                  margin: EdgeInsets.all(20),
                   child: SingleChildScrollView(
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
-                        const SizedBox(
-                          height: 20,
-                        ),
+                        SizedBox(height: 20),
                         Image.asset(
                           "assets/images/img_success.png",
                           height: 81,
                           width: 77,
                         ),
-                        const SizedBox(
-                          height: 31,
-                        ),
+                        SizedBox(height: 31),
                         Container(
-                          margin: const EdgeInsets.only(left: 20, right: 20),
+                          margin: EdgeInsets.only(left: 20, right: 20),
                           child: Text(
                             msg,
                             textAlign: TextAlign.center,
-                            style: const TextStyle(
-                                fontSize: 18,
-                                color: Color(0xFF000000),
-                                fontWeight: FontWeight.w300,
-                                fontFamily: "QuicksandLight"),
+                            style: TextStyle(
+                              fontSize: 18,
+                              color: Color(0xFF000000),
+                              fontWeight: FontWeight.w300,
+                              fontFamily: "QuicksandLight",
+                            ),
                           ),
                         ),
-                        const SizedBox(
-                          height: 30,
-                        ),
-                        const SizedBox(
-                          height: 20,
-                        ),
+                        SizedBox(height: 30),
+                        SizedBox(height: 20),
                       ],
                     ),
                   ),
