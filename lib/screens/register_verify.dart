@@ -1,9 +1,14 @@
 import 'dart:async';
 
+import 'package:darkmodeapp/screens/gender_screen.dart';
 import 'package:darkmodeapp/screens/register_screen.dart';
 import 'package:darkmodeapp/utils/main_color.dart';
+import 'package:darkmodeapp/widgets/button_widget.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+import 'package:flutter/widgets.dart';
+import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:pin_code_fields/pin_code_fields.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
@@ -21,7 +26,7 @@ class _RegisterVerifyScreenState extends State<RegisterVerifyScreen> {
   final formKey = GlobalKey<FormState>();
   int error = -1;
   String currentText = "";
-  int secondsRemaining = 30;
+  int secondsRemaining = 59;
   bool enableResend = false;
   late Timer timer;
   var otpcontroller = TextEditingController();
@@ -138,74 +143,50 @@ class _RegisterVerifyScreenState extends State<RegisterVerifyScreen> {
                                     ),
                                   ),
                                   SizedBox(height: 1.5.h),
-                                  Form(
-                                    key: formKey,
-                                    child: PinCodeTextField(
-                                      appContext: context,
-                                      pastedTextStyle: const TextStyle(
-                                        color: Color(0xff254d71),
-                                        fontWeight: FontWeight.bold,
-                                      ),
-                                      length: 6,
-                                      obscureText: false,
-                                      obscuringCharacter: '*',
-                                      autoFocus: false,
-                                      enablePinAutofill: false,
-                                      animationType: AnimationType.fade,
-                                      validator: (v) {
-                                        return null;
-                                      },
-                                      pinTheme: PinTheme(
-                                          activeColor: MainColor.colorFE8155,
-                                          shape: PinCodeFieldShape.box,
-                                          errorBorderColor:
-                                              const Color(0xFFB7B7B7),
-                                          selectedColor:
-                                              const Color(0xFFB7B7B7),
-                                          selectedFillColor:
-                                              const Color(0xFFB7B7B7),
+                                  TextField(
+                                    controller: otpcontroller,
+                                    maxLength: 4,
+                                    keyboardType: TextInputType.number,
+                                    inputFormatters: [
+                                      FilteringTextInputFormatter.allow(
+                                          RegExp("[0-9]")),
+                                    ],
+                                    buildCounter: (BuildContext context,
+                                            {required int currentLength,
+                                            int? maxLength,
+                                            required bool isFocused}) =>
+                                        null,
+                                    style: const TextStyle(
+                                        fontSize: 16,
+                                        fontStyle: FontStyle.normal,
+                                        // color: MainColor.colorBlack,
+                                        fontWeight: FontWeight.w400,
+                                        fontFamily: "QuicksandMedium"),
+                                    decoration: InputDecoration(
+                                      contentPadding:
+                                          EdgeInsets.symmetric(horizontal: 20),
+                                      border: OutlineInputBorder(
                                           borderRadius:
-                                              BorderRadius.circular(10),
-                                          fieldHeight: 65,
-                                          fieldWidth: 47,
-                                          activeFillColor: Colors.white,
-                                          inactiveColor:
-                                              const Color(0xFFB7B7B7),
-                                          inactiveFillColor: Colors.white),
-                                      cursorColor: MainColor.colorFE8155,
-                                      animationDuration:
-                                          const Duration(milliseconds: 300),
-                                      enableActiveFill: false,
-                                      errorAnimationController: errorController,
-                                      controller: otpcontroller,
-                                      keyboardType: TextInputType.number,
-                                      boxShadows: const [
-                                        BoxShadow(
-                                          offset: Offset(0, 1),
-                                          color: Colors.white,
-                                          blurRadius: 1,
-                                        )
-                                      ],
-                                      onCompleted: (v) {
-                                        debugPrint("Completed");
-                                      },
-                                      onChanged: (value) {
-                                        debugPrint(value);
-                                        setState(() {
-                                          currentText = value;
-                                        });
-                                      },
-                                      beforeTextPaste: (text) {
-                                        debugPrint("Allowing to paste $text");
-                                        return true;
-                                      },
+                                              BorderRadius.circular(25.0),
+                                          borderSide: const BorderSide(
+                                              color: MainColor.grey)),
+                                      focusedBorder: OutlineInputBorder(
+                                        borderRadius:
+                                            BorderRadius.circular(25.0),
+                                        borderSide: const BorderSide(
+                                          color: MainColor.grey,
+                                        ),
+                                      ),
+                                      enabledBorder: OutlineInputBorder(
+                                        borderRadius:
+                                            BorderRadius.circular(25.0),
+                                        borderSide: const BorderSide(
+                                          color: MainColor.grey,
+                                        ),
+                                      ),
                                     ),
                                   ),
-                                  const SizedBox(
-                                    height: 4,
-                                  ),
                                   Container(
-                                    padding: const EdgeInsets.only(left: 20),
                                     alignment: Alignment.topLeft,
                                     child: Text(
                                       error == 0
@@ -221,41 +202,44 @@ class _RegisterVerifyScreenState extends State<RegisterVerifyScreen> {
                                       ),
                                     ),
                                   ),
-                                  RichText(
-                                    text: TextSpan(
-                                      children: [
-                                        TextSpan(
-                                          text: 'Already have an account?  ',
+                                  Align(
+                                    alignment: Alignment.centerRight,
+                                    child: RichText(
+                                      text: TextSpan(
+                                        children: [
+                                          TextSpan(
+                                            text: 'Resend Code in ',
 
-                                          // .tr,
-                                          style: GoogleFonts.quicksand(
-                                            textStyle: TextStyle(
-                                                color: Color(0xffA3A3A3),
-                                                fontWeight: FontWeight.w700,
-                                                fontSize: 13.sp),
-                                          ),
-                                        ),
-                                        const WidgetSpan(
-                                            child: Padding(
-                                          padding: EdgeInsets.only(left: 2),
-                                        )),
-                                        TextSpan(
-                                            text: 'Log In',
+                                            // .tr,
                                             style: GoogleFonts.quicksand(
                                               textStyle: TextStyle(
-                                                  color: MainColor.colorWhite,
+                                                  color: Color(0xffA3A3A3),
                                                   fontWeight: FontWeight.w700,
                                                   fontSize: 13.sp),
                                             ),
-                                            recognizer: TapGestureRecognizer()
-                                              ..onTap = () {
-                                                Navigator.push(
-                                                    context,
-                                                    MaterialPageRoute(
-                                                        builder: (context) =>
-                                                            const RegisterScreen()));
-                                              }),
-                                      ],
+                                          ),
+                                          const WidgetSpan(
+                                              child: Padding(
+                                            padding: EdgeInsets.only(left: 2),
+                                          )),
+                                          TextSpan(
+                                              text: '${secondsRemaining}s',
+                                              style: GoogleFonts.quicksand(
+                                                textStyle: TextStyle(
+                                                    color: MainColor.colorWhite,
+                                                    fontWeight: FontWeight.w700,
+                                                    fontSize: 13.sp),
+                                              ),
+                                              recognizer: TapGestureRecognizer()
+                                                ..onTap = () {
+                                                  Navigator.push(
+                                                      context,
+                                                      MaterialPageRoute(
+                                                          builder: (context) =>
+                                                              const RegisterScreen()));
+                                                }),
+                                        ],
+                                      ),
                                     ),
                                   ),
                                 ],
@@ -264,11 +248,79 @@ class _RegisterVerifyScreenState extends State<RegisterVerifyScreen> {
                         SizedBox(
                           height: 3.h,
                         ),
+                        InkWell(
+                            onTap: () {
+                              Get.to(GenderScreen());
+                            },
+                            child: buttonWidget(.7.h, 20.7.w, "Verify")),
                       ]))),
             ])
           ],
         ),
       ),
     ));
+  }
+
+  dialogSuccess(BuildContext context, String msg) {
+    showDialog(
+      barrierDismissible: true,
+      context: context,
+      builder: (_) => AlertDialog(
+        shape: const RoundedRectangleBorder(
+            borderRadius: BorderRadius.all(Radius.circular(10.0))),
+        contentPadding: const EdgeInsets.only(top: 10.0),
+        content: SizedBox(
+          width: 300.0,
+          child: SingleChildScrollView(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.start,
+              crossAxisAlignment: CrossAxisAlignment.stretch,
+              mainAxisSize: MainAxisSize.min,
+              children: <Widget>[
+                Container(
+                  margin: const EdgeInsets.all(20),
+                  child: SingleChildScrollView(
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: [
+                        const SizedBox(
+                          height: 20,
+                        ),
+                        Image.asset(
+                          "assets/images/img_success.png",
+                          height: 81,
+                          width: 77,
+                        ),
+                        const SizedBox(
+                          height: 31,
+                        ),
+                        Container(
+                          margin: const EdgeInsets.only(left: 20, right: 20),
+                          child: Text(
+                            msg,
+                            textAlign: TextAlign.center,
+                            style: const TextStyle(
+                                fontSize: 18,
+                                color: Color(0xFF000000),
+                                fontWeight: FontWeight.w300,
+                                fontFamily: "QuicksandLight"),
+                          ),
+                        ),
+                        const SizedBox(
+                          height: 30,
+                        ),
+                        const SizedBox(
+                          height: 20,
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+              ],
+            ),
+          ),
+        ),
+      ),
+    );
   }
 }

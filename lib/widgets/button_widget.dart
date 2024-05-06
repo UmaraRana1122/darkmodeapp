@@ -2,7 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 
-Widget buttonWidget(double height, double width,String text,) {
+Widget buttonWidget(
+  double height,
+  double width,
+  String text,
+) {
   return Container(
     height: height.h,
     width: width.w,
@@ -21,7 +25,7 @@ Widget buttonWidget(double height, double width,String text,) {
     ),
     child: Center(
       child: Text(
-       text,
+        text,
         style: GoogleFonts.quicksand(
           textStyle: TextStyle(
             color: Colors.white,

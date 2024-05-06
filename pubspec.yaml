@@ -44,6 +44,10 @@ dependencies:
   carousel_slider: ^4.2.1
   flutter_switch: ^0.3.2
   pin_code_fields: ^8.0.1
+  flutter_holo_date_picker:
+  intl:
+
+
 
 
 dev_dependencies:
