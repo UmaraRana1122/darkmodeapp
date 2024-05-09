@@ -15,4 +15,6 @@ class MainColor {
   static const colorFE7A5F = Color(0xFFFE7A5F);
   static const heartRed = Color(0xFFFF0000);
   static const grey = Color(0xFFa3a3a3);
+  static const lightBlack = Color(0xFF2b2b2b);
+
 }

@@ -21,16 +21,20 @@ import 'package:darkmodeapp/screens/pet_screen.dart';
 import 'package:darkmodeapp/screens/pets_vivid.dart';
 import 'package:darkmodeapp/screens/physique_screen.dart';
 import 'package:darkmodeapp/screens/political_views.dart';
+import 'package:darkmodeapp/screens/preferences.dart';
 import 'package:darkmodeapp/screens/register_otp.dart';
 import 'package:darkmodeapp/screens/register_password.dart';
 import 'package:darkmodeapp/screens/register_screen.dart';
 import 'package:darkmodeapp/screens/register_verify.dart';
 import 'package:darkmodeapp/screens/religious_beleif.dart';
+import 'package:darkmodeapp/screens/result_screen.dart';
+import 'package:darkmodeapp/screens/settings.dart';
 import 'package:darkmodeapp/screens/sexual_orientation.dart';
 import 'package:darkmodeapp/screens/smoke_screen.dart';
 import 'package:darkmodeapp/screens/smoking_screen.dart';
 import 'package:darkmodeapp/screens/spalsh_screen.dart';
 import 'package:darkmodeapp/screens/splash1_screen.dart';
+import 'package:darkmodeapp/screens/upload.dart';
 import 'package:darkmodeapp/screens/welcome_screen.dart';
 import 'package:darkmodeapp/screens/workout_screen.dart';
 import 'package:darkmodeapp/screens/workout_vivid.dart';
@@ -55,7 +59,7 @@ class MyApp extends StatelessWidget {
           theme: ThemeDataStyle.light, // Light/Default mode styles
           darkTheme: ThemeDataStyle.dark,
           debugShowCheckedModeBanner: false,
-          home: InstaUsernameScreen(),
+          home: SettingsScreen(),
         );
       },
     );
