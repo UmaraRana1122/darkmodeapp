@@ -15,6 +15,7 @@ import 'package:darkmodeapp/screens/education_screen.dart';
 import 'package:darkmodeapp/screens/family_screen.dart';
 import 'package:darkmodeapp/screens/gender_screen.dart';
 import 'package:darkmodeapp/screens/henna_chat.dart';
+import 'package:darkmodeapp/screens/home_main.dart';
 import 'package:darkmodeapp/screens/home_screen.dart';
 import 'package:darkmodeapp/screens/insta_username.dart';
 import 'package:darkmodeapp/screens/intrest_screen.dart';
@@ -67,7 +68,7 @@ class MyApp extends StatelessWidget {
           theme: ThemeDataStyle.light, // Light/Default mode styles
           darkTheme: ThemeDataStyle.dark,
           debugShowCheckedModeBanner: false,
-          home: ProfileScreen(),
+          home: HomeScreen(),
         );
       },
     );
