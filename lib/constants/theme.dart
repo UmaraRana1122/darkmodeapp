@@ -4,10 +4,8 @@ class ThemeDataStyle {
   static ThemeData light = ThemeData(
     useMaterial3: true,
     brightness: Brightness.light,
-    colorScheme: ColorScheme.light(
-      background: Colors.grey.shade100,
-      primary: Colors.deepPurple.shade200,
-      secondary: Colors.deepPurple.shade300,
+   colorScheme: ColorScheme.light(
+      primary: Colors.green,
     ),
   );
 
