@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:darkmodeapp/utils/main_color.dart';
 import 'package:darkmodeapp/widgets/button_widget.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 
@@ -174,66 +175,4 @@ class _InstaUsernameScreenState extends State<InstaUsernameScreen> {
     ));
   }
 
-  dialogSuccess(BuildContext context, String msg) {
-    showDialog(
-      barrierDismissible: true,
-      context: context,
-      builder: (_) => AlertDialog(
-        shape: const RoundedRectangleBorder(
-            borderRadius: BorderRadius.all(Radius.circular(10.0))),
-        contentPadding: const EdgeInsets.only(top: 10.0),
-        content: SizedBox(
-          width: 300.0,
-          child: SingleChildScrollView(
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.start,
-              crossAxisAlignment: CrossAxisAlignment.stretch,
-              mainAxisSize: MainAxisSize.min,
-              children: <Widget>[
-                Container(
-                  margin: const EdgeInsets.all(20),
-                  child: SingleChildScrollView(
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      children: [
-                        const SizedBox(
-                          height: 20,
-                        ),
-                        Image.asset(
-                          "assets/images/img_success.png",
-                          height: 81,
-                          width: 77,
-                        ),
-                        const SizedBox(
-                          height: 31,
-                        ),
-                        Container(
-                          margin: const EdgeInsets.only(left: 20, right: 20),
-                          child: Text(
-                            msg,
-                            textAlign: TextAlign.center,
-                            style: const TextStyle(
-                                fontSize: 18,
-                                color: Color(0xFF000000),
-                                fontWeight: FontWeight.w300,
-                                fontFamily: "QuicksandLight"),
-                          ),
-                        ),
-                        const SizedBox(
-                          height: 30,
-                        ),
-                        const SizedBox(
-                          height: 20,
-                        ),
-                      ],
-                    ),
-                  ),
-                ),
-              ],
-            ),
-          ),
-        ),
-      ),
-    );
-  }
 }

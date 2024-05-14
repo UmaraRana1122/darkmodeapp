@@ -1,3 +1,4 @@
+import 'package:darkmodeapp/screens/upload.dart';
 import 'package:darkmodeapp/widgets/button_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -33,6 +34,7 @@ class _DOBScreenState extends State<DOBScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
         body: Container(
+            height: MediaQuery.of(context).size.height,
             decoration: BoxDecoration(
               gradient: LinearGradient(
                   begin: Alignment.topLeft,
@@ -171,7 +173,7 @@ class _DOBScreenState extends State<DOBScreen> {
                                         ),
                                         InkWell(
                                             onTap: () {
-                                              Get.to("page");
+                                              Get.to(UploadScreen());
                                             },
                                             child: buttonWidget(
                                                 .7.h, 20.7.w, "Next")),

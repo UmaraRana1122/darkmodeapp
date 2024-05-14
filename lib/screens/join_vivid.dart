@@ -1,6 +1,6 @@
 import 'dart:async';
 
-import 'package:darkmodeapp/screens/family_screen.dart';
+import 'package:darkmodeapp/screens/height_screen.dart';
 import 'package:darkmodeapp/utils/main_color.dart';
 import 'package:darkmodeapp/widgets/button_widget.dart';
 import 'package:flutter/material.dart';
@@ -8,24 +8,23 @@ import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 
-class EducationScreen extends StatefulWidget {
-  const EducationScreen({
+class JoinScreen2 extends StatefulWidget {
+  const JoinScreen2({
     super.key,
   });
 
   @override
-  State<EducationScreen> createState() => _EducationScreenState();
+  State<JoinScreen2> createState() => _JoinScreen2State();
 }
 
-class _EducationScreenState extends State<EducationScreen> {
+class _JoinScreen2State extends State<JoinScreen2> {
   String isChecked = "";
-  List<String> purposeList = <String>[
-    'Basic',
-    'Secondary School',
-    'College',
-    'University'
+  List<String> joinList = <String>[
+    'Free Crypto Currency (Luv)',
+    'Dating',
+    'Social'
   ];
-  String gender = 'Basic';
+  String gender = 'Free Crypto Currency (Luv)';
 
   @override
   Widget build(BuildContext context) {
@@ -45,25 +44,40 @@ class _EducationScreenState extends State<EducationScreen> {
         bottom: false,
         child: Column(
           children: [
-            Align(
-                alignment: Alignment.topLeft,
-                child: Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 12),
-                  child: Icon(Icons.arrow_back_ios_new),
-                )),
-            Center(child: Image.asset("assets/icons/logo1.png")),
-            SizedBox(
-              height: 2.h,
-            ),
-            Text(
-              'Complete your Profile',
-              style: GoogleFonts.quicksand(
-                textStyle: TextStyle(
-                    color: Color(0xffffffff),
-                    fontWeight: FontWeight.w700,
-                    fontSize: 18.sp),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 10),
+              child: Row(
+                children: [
+                  InkWell(
+                    onTap: () {
+                      Navigator.pop(context);
+                    },
+                    child: Image.asset(
+                      "assets/logo/arrow.png",
+                      height: 22,
+                    ),
+                  ),
+                  Spacer(),
+                  Text(
+                    'Height',
+                    style: GoogleFonts.quicksand(
+                      textStyle: TextStyle(
+                        color: Color(0xffffffff),
+                        fontWeight: FontWeight.w600,
+                        fontSize: 18.sp,
+                      ),
+                    ),
+                  ),
+                  Spacer(),
+                ],
               ),
             ),
+            SizedBox(height: 2.h),
+            Center(
+                child: Image.asset(
+              "assets/logo/vividlogo.png",
+              height: 9.3.h,
+            )),
             SizedBox(
               height: 4.h,
             ),
@@ -87,36 +101,26 @@ class _EducationScreenState extends State<EducationScreen> {
                                 borderRadius: BorderRadius.circular(14),
                                 color: Color(0xff676767)),
                             child: Padding(
-                              padding: const EdgeInsets.all(15.0),
+                              padding: const EdgeInsets.all(20.0),
                               child: Column(
                                 children: [
-                                  Text(
-                                    'Your Education ',
-                                    style: GoogleFonts.quicksand(
-                                      textStyle: TextStyle(
-                                          color: Color(0xffffffff),
-                                          fontWeight: FontWeight.w600,
-                                          fontSize: 17.sp),
-                                    ),
-                                  ),
-                                  SizedBox(height: 1.5.h),
                                   ListView.builder(
                                     physics:
                                         const NeverScrollableScrollPhysics(),
                                     shrinkWrap: true,
-                                    itemCount: purposeList.length,
+                                    itemCount: joinList.length,
                                     itemBuilder:
                                         (BuildContext context, int index) {
                                       final isSelected =
-                                          purposeList[index] == isChecked;
+                                          joinList[index] == isChecked;
                                       return GestureDetector(
                                         onTap: () {
                                           // Handle tap here
-                                          isChecked = purposeList[index];
+                                          isChecked = joinList[index];
                                           setState(() {});
                                         },
                                         child: Padding(
-                                          padding: const EdgeInsets.all(2.0),
+                                          padding: const EdgeInsets.all(3.0),
                                           child: Container(
                                             child: Card(
                                               elevation: 0,
@@ -128,7 +132,7 @@ class _EducationScreenState extends State<EducationScreen> {
                                                     BorderRadius.circular(25),
                                               ),
                                               child: Container(
-                                                height: 50,
+                                                height: 45,
                                                 decoration: BoxDecoration(
                                                   color: isSelected
                                                       ? MainColor.colorWhite
@@ -155,7 +159,7 @@ class _EducationScreenState extends State<EducationScreen> {
                                                         width:
                                                             8), // Add some space between icon and text
                                                     Text(
-                                                      purposeList[index],
+                                                      joinList[index],
                                                       style: TextStyle(
                                                         fontSize: 14,
                                                         fontWeight:
@@ -185,7 +189,9 @@ class _EducationScreenState extends State<EducationScreen> {
                         ),
                         InkWell(
                             onTap: () {
-                              Get.to(FamilyScreen());
+                              Get.to(SelectHeightScreen(
+                                status: true,
+                              ));
                             },
                             child: buttonWidget(.7.h, 20.7.w, "Next")),
                         SizedBox(

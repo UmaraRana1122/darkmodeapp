@@ -1,5 +1,7 @@
 import 'package:darkmodeapp/models/profile_public_user.dart';
 import 'package:darkmodeapp/screens/join_screen.dart';
+import 'package:darkmodeapp/screens/join_vivid.dart';
+import 'package:darkmodeapp/screens/your_interest.dart';
 import 'package:darkmodeapp/utils/main_color.dart';
 import 'package:darkmodeapp/widgets/button_widget.dart';
 import 'package:darkmodeapp/widgets/my_inkwell.dart';
@@ -8,16 +10,16 @@ import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 
-class InterestScreen extends StatefulWidget {
-  const InterestScreen({
+class InterestScreen2 extends StatefulWidget {
+  const InterestScreen2({
     Key? key,
   }) : super(key: key);
 
   @override
-  State<InterestScreen> createState() => _InterestScreenState();
+  State<InterestScreen2> createState() => _InterestScreen2State();
 }
 
-class _InterestScreenState extends State<InterestScreen> {
+class _InterestScreen2State extends State<InterestScreen2> {
   String isChecked = "";
   List<String> interestList = <String>[
     "Photography",
@@ -51,25 +53,40 @@ class _InterestScreenState extends State<InterestScreen> {
           bottom: false,
           child: Column(
             children: [
-              Align(
-                  alignment: Alignment.topLeft,
-                  child: Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 12),
-                    child: Icon(Icons.arrow_back_ios_new),
-                  )),
-              Center(child: Image.asset("assets/icons/logo1.png")),
-              SizedBox(
-                height: 2.h,
-              ),
-              Text(
-                'Complete your Profile',
-                style: GoogleFonts.quicksand(
-                  textStyle: TextStyle(
-                      color: Color(0xffffffff),
-                      fontWeight: FontWeight.w700,
-                      fontSize: 18.sp),
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 10),
+                child: Row(
+                  children: [
+                    InkWell(
+                      onTap: () {
+                        Navigator.pop(context);
+                      },
+                      child: Image.asset(
+                        "assets/logo/arrow.png",
+                        height: 22,
+                      ),
+                    ),
+                    Spacer(),
+                    Text(
+                      'Your Interest',
+                      style: GoogleFonts.quicksand(
+                        textStyle: TextStyle(
+                          color: Color(0xffffffff),
+                          fontWeight: FontWeight.w600,
+                          fontSize: 18.sp,
+                        ),
+                      ),
+                    ),
+                    Spacer(),
+                  ],
                 ),
               ),
+              SizedBox(height: 2.h),
+              Center(
+                  child: Image.asset(
+                "assets/logo/vividlogo.png",
+                height: 9.3.h,
+              )),
               SizedBox(
                 height: 4.h,
               ),
@@ -78,7 +95,7 @@ class _InterestScreenState extends State<InterestScreen> {
                     alignment: Alignment.bottomCenter,
                     child: Container(
                         width: 100.w,
-                        height: MediaQuery.of(context).size.height * 0.714,
+                        height: MediaQuery.of(context).size.height * 0.75,
                         decoration: const BoxDecoration(
                             borderRadius: BorderRadius.only(
                               topLeft: Radius.circular(40),
@@ -129,16 +146,6 @@ class _InterestScreenState extends State<InterestScreen> {
                                 padding: const EdgeInsets.all(20.0),
                                 child: Column(
                                   children: [
-                                    Text(
-                                      'Select Your Interests ',
-                                      style: GoogleFonts.quicksand(
-                                        textStyle: TextStyle(
-                                            color: Color(0xffffffff),
-                                            fontWeight: FontWeight.w600,
-                                            fontSize: 17.sp),
-                                      ),
-                                    ),
-                                    SizedBox(height: 1.5.h),
                                     GridView.builder(
                                       itemCount: interestList.length,
                                       controller: ScrollController(
@@ -231,32 +238,10 @@ class _InterestScreenState extends State<InterestScreen> {
                           ),
                           InkWell(
                               onTap: () {
-                                Get.to(JoinScreen());
+                                Get.to(RelationsGoals());
                               },
                               child: buttonWidget(7, 90, "Next")),
-                          SizedBox(
-                            height: 1.h,
-                          ),
-                          Container(
-                            height: 6.h,
-                            width: 90.w,
-                            decoration: BoxDecoration(
-                              border: Border.all(color: Colors.grey),
-                              borderRadius: BorderRadius.circular(12),
-                            ),
-                            child: Center(
-                              child: Text(
-                                "Skip",
-                                style: GoogleFonts.quicksand(
-                                  textStyle: TextStyle(
-                                    color: Colors.white,
-                                    fontWeight: FontWeight.w600,
-                                    fontSize: 17.sp,
-                                  ),
-                                ),
-                              ),
-                            ),
-                          )
+
                           // Padding(
                           //   padding: const EdgeInsets.all(17.0),
                           //   child: AppButton(

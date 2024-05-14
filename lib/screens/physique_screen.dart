@@ -1,8 +1,10 @@
 import 'dart:async';
 
+import 'package:darkmodeapp/screens/religious_beleif.dart';
 import 'package:darkmodeapp/utils/main_color.dart';
 import 'package:darkmodeapp/widgets/button_widget.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 
@@ -181,7 +183,7 @@ class _PhysiqueScreenState extends State<PhysiqueScreen> {
                         ),
                         InkWell(
                             onTap: () {
-                              // Get.to(DOBScreen());
+                              Get.to(ReligiousBeliefsScreen());
                             },
                             child: buttonWidget(.7.h, 20.7.w, "Save")),
                       ]))),

@@ -1,21 +1,23 @@
+import 'package:darkmodeapp/screens/sexual_orientation.dart';
 import 'package:darkmodeapp/utils/main_color.dart';
 import 'package:darkmodeapp/widgets/button_widget.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 
-class YourInterestScreen extends StatefulWidget {
-  const YourInterestScreen({
+class RelationsGoals extends StatefulWidget {
+  const RelationsGoals({
     super.key,
   });
 
   @override
-  State<YourInterestScreen> createState() => YourInterestScreenState();
+  State<RelationsGoals> createState() => RelationsGoalsState();
 }
 
-class YourInterestScreenState extends State<YourInterestScreen> {
+class RelationsGoalsState extends State<RelationsGoals> {
   Set<String> selectedGoals = {}; // Use Set to store multiple selected items
 
   List<String> goalsList = <String>[
@@ -213,7 +215,7 @@ class YourInterestScreenState extends State<YourInterestScreen> {
                             SizedBox(height: 3.h),
                             InkWell(
                               onTap: () {
-                                // Get.to(DOBScreen());
+                                Get.to(SexualOrientationScreen());
                               },
                               child: buttonWidget(.7.h, 20.7.w, "Save"),
                             ),

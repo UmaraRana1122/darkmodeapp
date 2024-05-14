@@ -1,8 +1,11 @@
 import 'dart:async';
 
+import 'package:darkmodeapp/screens/alcohol_screen.dart';
+import 'package:darkmodeapp/screens/alcohol_vivid.dart';
 import 'package:darkmodeapp/utils/main_color.dart';
 import 'package:darkmodeapp/widgets/button_widget.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 
@@ -78,7 +81,7 @@ class _ChildrenScreenState extends State<ChildrenScreen> {
                   alignment: Alignment.bottomCenter,
                   child: Container(
                       width: 100.w,
-                      height: 71.h,
+                      height: MediaQuery.of(context).size.height * 0.75,
                       decoration: const BoxDecoration(
                           borderRadius: BorderRadius.only(
                             topLeft: Radius.circular(40),
@@ -183,7 +186,7 @@ class _ChildrenScreenState extends State<ChildrenScreen> {
                         ),
                         InkWell(
                             onTap: () {
-                              // Get.to(DOBScreen());
+                              Get.to(AlcoholScreen2());
                             },
                             child: buttonWidget(.7.h, 20.7.w, "Save")),
                       ]))),

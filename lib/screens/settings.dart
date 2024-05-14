@@ -1,11 +1,12 @@
+import 'package:darkmodeapp/screens/home_screen.dart';
 import 'package:darkmodeapp/utils/main_color.dart';
 import 'package:darkmodeapp/widgets/button_widget.dart';
 import 'package:darkmodeapp/widgets/information_widget.dart';
-import 'package:darkmodeapp/widgets/prefrence_widget.dart';
+import 'package:darkmodeapp/widgets/my_inkwell.dart';
 import 'package:darkmodeapp/widgets/setting_widget.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_switch/flutter_switch.dart';
+import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 
@@ -153,8 +154,13 @@ class _SettingsScreenState extends State<SettingsScreen> {
                         InfoWidget(text: "Privacy Policy"),
                         InfoWidget(text: "Terms of Use"),
                         SizedBox(
-                          height: .7.h,
+                          height: 2.h,
                         ),
+                        InkWell(
+                            onTap: () {
+                              Get.to(HomeScreen());
+                            },
+                            child: buttonWidget(6, 90, "Next"))
                       ],
                     ),
                   ),

@@ -98,7 +98,7 @@ class _RegisterVerifyScreenState extends State<RegisterVerifyScreen> {
               height: 2.h,
             ),
             Text(
-              'Registeration',
+              'Mobile Verification',
               style: GoogleFonts.quicksand(
                 textStyle: TextStyle(
                     color: Color(0xffffffff),

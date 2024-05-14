@@ -17,6 +17,15 @@ class _ResultScreenState extends State<ResultScreen> {
   int secondHExIndex = 0;
   int lastHExIndex = 0;
   int lastVExIndex = 0;
+  List<Map<String, String>> rowData = [
+    {'date': '02-02-2023', 'name': 'Andy'},
+    {'date': '03-02-2023', 'name': 'John'},
+    {'date': '04-02-2023', 'name': 'Alice'},
+    {'date': '05-02-2023', 'name': 'Bob'},
+    {'date': '06-02-2023', 'name': 'Emma'},
+    {'date': '07-02-2023', 'name': 'Tom'},
+    {'date': '08-02-2023', 'name': 'Sarah'},
+  ];
 
   @override
   Widget build(BuildContext context) {
@@ -170,48 +179,196 @@ class _ResultScreenState extends State<ResultScreen> {
                 SizedBox(
                   height: 2.h,
                 ),
-                AnimatedHorizontalToggle(
-                  taps: const [
-                    'Love Received',
-                    'Invite Result',
-                  ],
-                  // write you taps names
-                  width: MediaQuery.of(context).size.width - 41,
-                  height: 48,
-                  duration: const Duration(milliseconds: 100),
-                  initialIndex: 0,
-                  showPrefixIcon: true,
-
-                  background: Colors.white,
-                  activeColor: Colors.deepPurple,
-                  activeTextStyle: GoogleFonts.quicksand(
-                    textStyle: TextStyle(
-                      color: MainColor.colorWhite,
-                      fontWeight: FontWeight.w600,
-                      fontSize: 16.sp,
-                    ),
+                Container(
+                  width: MediaQuery.of(context).size.width - 20,
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(15),
+                    color: Color(0xff4e4e4e), // Adjust color as needed
                   ),
-                  inActiveTextStyle: GoogleFonts.quicksand(
-                    textStyle: TextStyle(
-                      color: MainColor.colorBlack,
-                      fontWeight: FontWeight.w600,
-                      fontSize: 16.sp,
-                    ),
+                  child: Column(
+                    children: [
+                      SizedBox(
+                        height: 2.h,
+                      ),
+                      AnimatedHorizontalToggle(
+                        taps: const [
+                          'Love Received',
+                          'Invite Result',
+                        ],
+                        width: MediaQuery.of(context).size.width - 40,
+                        height: 48,
+                        duration: const Duration(milliseconds: 100),
+                        initialIndex: 0,
+                        showPrefixIcon: true,
+                        background: Colors.white,
+                        activeColor: Colors.deepPurple,
+                        activeTextStyle: GoogleFonts.quicksand(
+                          textStyle: TextStyle(
+                            color: MainColor.colorWhite,
+                            fontWeight: FontWeight.w600,
+                            fontSize: 16.sp,
+                          ),
+                        ),
+                        inActiveTextStyle: GoogleFonts.quicksand(
+                          textStyle: TextStyle(
+                            color: MainColor.colorBlack,
+                            fontWeight: FontWeight.w600,
+                            fontSize: 16.sp,
+                          ),
+                        ),
+                        horizontalPadding: 0,
+                        verticalPadding: 0,
+                        activeHorizontalPadding: 0,
+                        activeVerticalPadding: 0,
+                        radius: 15,
+                        activeButtonRadius: 15,
+                        onChange: (int currentIndex, int targetIndex) {
+                          setState(() {
+                            secondHExIndex = currentIndex;
+                          });
+                        },
+                        showActiveButtonColor: true,
+                        local: 'en',
+                      ),
+                      SizedBox(
+                        height: 2.h,
+                      ),
+                      secondHExIndex == 0
+                          ? Column(
+                              children: [
+                                Row(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceAround,
+                                  children: [
+                                    Text(
+                                      'Date',
+                                      style: GoogleFonts.quicksand(
+                                        textStyle: TextStyle(
+                                          color: MainColor.colorWhite,
+                                          fontWeight: FontWeight.w700,
+                                          fontSize: 16.sp,
+                                        ),
+                                      ),
+                                    ),
+                                    Text(
+                                      'User',
+                                      style: GoogleFonts.quicksand(
+                                        textStyle: TextStyle(
+                                          color: MainColor.colorWhite,
+                                          fontWeight: FontWeight.w700,
+                                          fontSize: 16.sp,
+                                        ),
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                                for (int i = 0; i < rowData.length; i++)
+                                  Padding(
+                                    padding:
+                                        const EdgeInsets.symmetric(vertical: 8),
+                                    child: Row(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.spaceAround,
+                                      children: [
+                                        Text(
+                                          rowData[i]['date'] ??
+                                              '', // Use date from the data list
+                                          style: GoogleFonts.quicksand(
+                                            textStyle: TextStyle(
+                                              color: MainColor.colorWhite,
+                                              fontWeight: FontWeight.w600,
+                                              fontSize: 12.sp,
+                                            ),
+                                          ),
+                                        ),
+                                        Image.asset(
+                                          "assets/logo/Logo.png",
+                                          height: 20,
+                                        ),
+                                        Text(
+                                          rowData[i]['name'] ?? '',
+                                          style: GoogleFonts.quicksand(
+                                            textStyle: TextStyle(
+                                              color: MainColor.colorWhite,
+                                              fontWeight: FontWeight.w600,
+                                              fontSize: 12.sp,
+                                            ),
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                              ],
+                            )
+                          : Column(
+                              children: [
+                                Row(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceAround,
+                                  children: [
+                                    Text(
+                                      'Invite Type',
+                                      style: GoogleFonts.quicksand(
+                                        textStyle: TextStyle(
+                                          color: MainColor.colorWhite,
+                                          fontWeight: FontWeight.w700,
+                                          fontSize: 16.sp,
+                                        ),
+                                      ),
+                                    ),
+                                    Text(
+                                      'Count',
+                                      style: GoogleFonts.quicksand(
+                                        textStyle: TextStyle(
+                                          color: MainColor.colorWhite,
+                                          fontWeight: FontWeight.w700,
+                                          fontSize: 16.sp,
+                                        ),
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                                for (int i = 0; i < rowData.length; i++)
+                                  Padding(
+                                    padding:
+                                        const EdgeInsets.symmetric(vertical: 8),
+                                    child: Row(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.spaceAround,
+                                      children: [
+                                        Text(
+                                          rowData[i]['date'] ??
+                                              '', // Use date from the data list
+                                          style: GoogleFonts.quicksand(
+                                            textStyle: TextStyle(
+                                              color: MainColor.colorWhite,
+                                              fontWeight: FontWeight.w600,
+                                              fontSize: 12.sp,
+                                            ),
+                                          ),
+                                        ),
+                                        Image.asset(
+                                          "assets/logo/Logo.png",
+                                          height: 20,
+                                        ),
+                                        Text(
+                                          rowData[i]['name'] ?? '',
+                                          style: GoogleFonts.quicksand(
+                                            textStyle: TextStyle(
+                                              color: MainColor.colorWhite,
+                                              fontWeight: FontWeight.w600,
+                                              fontSize: 12.sp,
+                                            ),
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                              ],
+                            )
+                    ],
                   ),
-                  horizontalPadding: 0,
-                  verticalPadding: 0,
-                  activeHorizontalPadding: 0,
-                  activeVerticalPadding: 0,
-                  radius: 15,
-                  activeButtonRadius: 15,
-                  onChange: (int currentIndex, int targetIndex) {
-                    setState(() {
-                      secondHExIndex = currentIndex;
-                    });
-                  },
-                  showActiveButtonColor: true,
-                  local: 'en',
-                )
+                ),
               ]),
             ),
           ),

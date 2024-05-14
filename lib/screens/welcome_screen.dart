@@ -1,6 +1,9 @@
+import 'package:darkmodeapp/screens/register_screen.dart';
 import 'package:darkmodeapp/widgets/button_widget.dart';
+import 'package:darkmodeapp/widgets/my_inkwell.dart';
 import 'package:darkmodeapp/widgets/text_widget.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 
@@ -62,7 +65,11 @@ class WelcomeScreen extends StatelessWidget {
                 textWidget(),
                 textWidget(),
                 Spacer(),
-                buttonWidget(.8.h, 9.w, "I agree"),
+                InkWell(
+                    onTap: () {
+                      Get.to(RegisterScreen());
+                    },
+                    child: buttonWidget(.8.h, 9.w, "I agree")),
                 Spacer(
                   flex: 1,
                 ),

@@ -1,8 +1,10 @@
 import 'dart:async';
 
+import 'package:darkmodeapp/screens/height_screen.dart';
 import 'package:darkmodeapp/utils/main_color.dart';
 import 'package:darkmodeapp/widgets/button_widget.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 
@@ -88,7 +90,7 @@ class _JoinScreenState extends State<JoinScreen> {
                               child: Column(
                                 children: [
                                   Text(
-                                    'Select your Gender ',
+                                    'Why do you want to join Vivid',
                                     style: GoogleFonts.quicksand(
                                       textStyle: TextStyle(
                                           color: Color(0xffffffff),
@@ -182,7 +184,9 @@ class _JoinScreenState extends State<JoinScreen> {
                         ),
                         InkWell(
                             onTap: () {
-                              // Get.to(DOBScreen());
+                              Get.to(SelectHeightScreen(
+                                status: true,
+                              ));
                             },
                             child: buttonWidget(.7.h, 20.7.w, "Next")),
                         SizedBox(

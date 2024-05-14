@@ -1,10 +1,13 @@
+import 'package:darkmodeapp/screens/ready_selfie1.dart';
 import 'package:darkmodeapp/utils/main_color.dart';
 import 'package:darkmodeapp/widgets/button_widget.dart';
 import 'package:darkmodeapp/widgets/information_widget.dart';
+import 'package:darkmodeapp/widgets/my_inkwell.dart';
 import 'package:darkmodeapp/widgets/setting_widget.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 
@@ -221,7 +224,11 @@ class _ProfileVerificationScreenState extends State<ProfileVerificationScreen> {
                     SizedBox(
                       height: 3.h,
                     ),
-                    buttonWidget(7, 90, "Continue")
+                    InkWell(
+                        onTap: () {
+                          Get.to(ReadyForSelfie1Screen());
+                        },
+                        child: buttonWidget(7, 90, "Continue"))
                   ]),
             ),
           ),

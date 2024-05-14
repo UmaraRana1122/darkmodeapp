@@ -54,6 +54,10 @@ dependencies:
   pretty_http_logger: ^1.0.3
   fluttertoast:
   url_launcher: ^6.0.0
+  lottie: ^3.1.0
+  image_picker: ^1.1.1
+
+
 
 
 

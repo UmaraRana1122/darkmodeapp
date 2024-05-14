@@ -1,3 +1,4 @@
+import 'package:darkmodeapp/screens/intrest_screen.dart';
 import 'package:darkmodeapp/widgets/button_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -81,7 +82,7 @@ class _AboutScreenState extends State<AboutScreen> {
                                               CrossAxisAlignment.start,
                                           children: [
                                             Text(
-                                              'Enter things about yourself',
+                                              'A little about yourself',
                                               style: GoogleFonts.quicksand(
                                                 textStyle: TextStyle(
                                                     color: Color(0xffffffff),
@@ -132,7 +133,7 @@ class _AboutScreenState extends State<AboutScreen> {
                               ),
                               InkWell(
                                   onTap: () {
-                                    Get.to("page");
+                                    Get.to(InterestScreen());
                                   },
                                   child: buttonWidget(.7.h, 20.7.w, "Next")),
                               SizedBox(

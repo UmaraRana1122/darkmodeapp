@@ -1,9 +1,11 @@
 import 'package:darkmodeapp/screens/register_screen.dart';
+import 'package:darkmodeapp/screens/register_verify.dart';
 import 'package:darkmodeapp/utils/main_color.dart';
 import 'package:darkmodeapp/widgets/button_widget.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 
@@ -281,6 +283,7 @@ class _RegisterOtpScreenState extends State<RegisterOtpScreen> {
                         ),
                         InkWell(
                             onTap: () {
+                              Get.to(RegisterVerifyScreen());
                               if (phoneNumberController.text.isEmpty ||
                                   !(RegExp("[0-9]"))
                                       .hasMatch(phoneNumberController.text)) {

@@ -182,7 +182,7 @@ class _GenderScreenState extends State<GenderScreen> {
                         ),
                         InkWell(
                             onTap: () {
-                              // Get.to(DOBScreen());
+                              Get.to(DOBScreen());
                             },
                             child: buttonWidget(.7.h, 20.7.w, "Next")),
                       ]))),

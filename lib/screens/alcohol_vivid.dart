@@ -1,6 +1,7 @@
 import 'dart:async';
 
-import 'package:darkmodeapp/screens/family_screen.dart';
+import 'package:darkmodeapp/screens/smoke_screen.dart';
+import 'package:darkmodeapp/screens/smoking_screen.dart';
 import 'package:darkmodeapp/utils/main_color.dart';
 import 'package:darkmodeapp/widgets/button_widget.dart';
 import 'package:flutter/material.dart';
@@ -8,24 +9,19 @@ import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 
-class EducationScreen extends StatefulWidget {
-  const EducationScreen({
+class AlcoholScreen2 extends StatefulWidget {
+  const AlcoholScreen2({
     super.key,
   });
 
   @override
-  State<EducationScreen> createState() => _EducationScreenState();
+  State<AlcoholScreen2> createState() => _AlcoholScreen2State();
 }
 
-class _EducationScreenState extends State<EducationScreen> {
+class _AlcoholScreen2State extends State<AlcoholScreen2> {
   String isChecked = "";
-  List<String> purposeList = <String>[
-    'Basic',
-    'Secondary School',
-    'College',
-    'University'
-  ];
-  String gender = 'Basic';
+  List<String> alcoholList = <String>['I do not drink', 'Socially', 'Often'];
+  String gender = 'I do not drink';
 
   @override
   Widget build(BuildContext context) {
@@ -45,25 +41,40 @@ class _EducationScreenState extends State<EducationScreen> {
         bottom: false,
         child: Column(
           children: [
-            Align(
-                alignment: Alignment.topLeft,
-                child: Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 12),
-                  child: Icon(Icons.arrow_back_ios_new),
-                )),
-            Center(child: Image.asset("assets/icons/logo1.png")),
-            SizedBox(
-              height: 2.h,
-            ),
-            Text(
-              'Complete your Profile',
-              style: GoogleFonts.quicksand(
-                textStyle: TextStyle(
-                    color: Color(0xffffffff),
-                    fontWeight: FontWeight.w700,
-                    fontSize: 18.sp),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 10),
+              child: Row(
+                children: [
+                  InkWell(
+                    onTap: () {
+                      Navigator.pop(context);
+                    },
+                    child: Image.asset(
+                      "assets/logo/arrow.png",
+                      height: 22,
+                    ),
+                  ),
+                  Spacer(),
+                  Text(
+                    'Alcohol',
+                    style: GoogleFonts.quicksand(
+                      textStyle: TextStyle(
+                        color: Color(0xffffffff),
+                        fontWeight: FontWeight.w600,
+                        fontSize: 18.sp,
+                      ),
+                    ),
+                  ),
+                  Spacer(),
+                ],
               ),
             ),
+            SizedBox(height: 2.h),
+            Center(
+                child: Image.asset(
+              "assets/logo/vividlogo.png",
+              height: 9.3.h,
+            )),
             SizedBox(
               height: 4.h,
             ),
@@ -72,13 +83,46 @@ class _EducationScreenState extends State<EducationScreen> {
                   alignment: Alignment.bottomCenter,
                   child: Container(
                       width: 100.w,
-                      height: 71.h,
-                      decoration: const BoxDecoration(
-                          borderRadius: BorderRadius.only(
-                            topLeft: Radius.circular(40),
-                            topRight: Radius.circular(40),
+                      height: MediaQuery.of(context).size.height * 0.75,
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.only(
+                          topLeft: Radius.circular(40),
+                          topRight: Radius.circular(40),
+                        ),
+                        boxShadow: [
+                          BoxShadow(
+                            color: Colors.black.withOpacity(0.1),
+                            offset: Offset(0, 1),
+                            blurRadius: 3,
+                            spreadRadius: 0,
                           ),
-                          color: Color(0xff5a5a5a)),
+                          BoxShadow(
+                            color: Colors.black.withOpacity(0.09),
+                            offset: Offset(0, 6),
+                            blurRadius: 6,
+                            spreadRadius: 0,
+                          ),
+                          BoxShadow(
+                            color: Colors.black.withOpacity(0.05),
+                            offset: Offset(0, 13),
+                            blurRadius: 8,
+                            spreadRadius: 0,
+                          ),
+                          BoxShadow(
+                            color: Colors.black.withOpacity(0.01),
+                            offset: Offset(0, 22),
+                            blurRadius: 9,
+                            spreadRadius: 0,
+                          ),
+                          BoxShadow(
+                            color: Colors.black.withOpacity(0.0),
+                            offset: Offset(0, 35),
+                            blurRadius: 10,
+                            spreadRadius: 0,
+                          ),
+                        ],
+                        color: Color(0xff5a5a5a),
+                      ),
                       child: Column(children: [
                         SizedBox(height: 3.h),
                         Container(
@@ -87,36 +131,26 @@ class _EducationScreenState extends State<EducationScreen> {
                                 borderRadius: BorderRadius.circular(14),
                                 color: Color(0xff676767)),
                             child: Padding(
-                              padding: const EdgeInsets.all(15.0),
+                              padding: const EdgeInsets.all(20.0),
                               child: Column(
                                 children: [
-                                  Text(
-                                    'Your Education ',
-                                    style: GoogleFonts.quicksand(
-                                      textStyle: TextStyle(
-                                          color: Color(0xffffffff),
-                                          fontWeight: FontWeight.w600,
-                                          fontSize: 17.sp),
-                                    ),
-                                  ),
-                                  SizedBox(height: 1.5.h),
                                   ListView.builder(
                                     physics:
                                         const NeverScrollableScrollPhysics(),
                                     shrinkWrap: true,
-                                    itemCount: purposeList.length,
+                                    itemCount: alcoholList.length,
                                     itemBuilder:
                                         (BuildContext context, int index) {
                                       final isSelected =
-                                          purposeList[index] == isChecked;
+                                          alcoholList[index] == isChecked;
                                       return GestureDetector(
                                         onTap: () {
                                           // Handle tap here
-                                          isChecked = purposeList[index];
+                                          isChecked = alcoholList[index];
                                           setState(() {});
                                         },
                                         child: Padding(
-                                          padding: const EdgeInsets.all(2.0),
+                                          padding: const EdgeInsets.all(3.0),
                                           child: Container(
                                             child: Card(
                                               elevation: 0,
@@ -128,7 +162,7 @@ class _EducationScreenState extends State<EducationScreen> {
                                                     BorderRadius.circular(25),
                                               ),
                                               child: Container(
-                                                height: 50,
+                                                height: 45,
                                                 decoration: BoxDecoration(
                                                   color: isSelected
                                                       ? MainColor.colorWhite
@@ -155,7 +189,7 @@ class _EducationScreenState extends State<EducationScreen> {
                                                         width:
                                                             8), // Add some space between icon and text
                                                     Text(
-                                                      purposeList[index],
+                                                      alcoholList[index],
                                                       style: TextStyle(
                                                         fontSize: 14,
                                                         fontWeight:
@@ -185,32 +219,9 @@ class _EducationScreenState extends State<EducationScreen> {
                         ),
                         InkWell(
                             onTap: () {
-                              Get.to(FamilyScreen());
+                              Get.to(SmokeScreen());
                             },
-                            child: buttonWidget(.7.h, 20.7.w, "Next")),
-                        SizedBox(
-                          height: 1.h,
-                        ),
-                        Container(
-                          height: 6.h,
-                          width: 90.w,
-                          decoration: BoxDecoration(
-                            border: Border.all(color: Colors.grey),
-                            borderRadius: BorderRadius.circular(12),
-                          ),
-                          child: Center(
-                            child: Text(
-                              "Skip",
-                              style: GoogleFonts.quicksand(
-                                textStyle: TextStyle(
-                                  color: Colors.white,
-                                  fontWeight: FontWeight.w600,
-                                  fontSize: 17.sp,
-                                ),
-                              ),
-                            ),
-                          ),
-                        )
+                            child: buttonWidget(.7.h, 20.7.w, "Save")),
                       ]))),
             ])
           ],

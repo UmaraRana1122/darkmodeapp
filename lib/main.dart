@@ -29,6 +29,7 @@ import 'package:darkmodeapp/screens/physique_screen.dart';
 import 'package:darkmodeapp/screens/political_views.dart';
 import 'package:darkmodeapp/screens/preferences.dart';
 import 'package:darkmodeapp/screens/profile_screen.dart';
+import 'package:darkmodeapp/screens/profile_upload.dart';
 import 'package:darkmodeapp/screens/profile_verification.dart';
 import 'package:darkmodeapp/screens/ready_selfie1.dart';
 import 'package:darkmodeapp/screens/register_otp.dart';
@@ -68,7 +69,7 @@ class MyApp extends StatelessWidget {
           theme: ThemeDataStyle.light, // Light/Default mode styles
           darkTheme: ThemeDataStyle.dark,
           debugShowCheckedModeBanner: false,
-          home: HomeScreen(),
+          home: ResultScreen(),
         );
       },
     );

@@ -1,7 +1,9 @@
+import 'package:darkmodeapp/screens/my_subscription.dart';
 import 'package:darkmodeapp/utils/main_color.dart';
 import 'package:darkmodeapp/widgets/button_widget.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 
@@ -13,8 +15,6 @@ class ReadyForSelfie2Screen extends StatefulWidget {
 }
 
 class _ReadyForSelfie2ScreenState extends State<ReadyForSelfie2Screen> {
-
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -41,9 +41,14 @@ class _ReadyForSelfie2ScreenState extends State<ReadyForSelfie2Screen> {
                   children: [
                     Align(
                       alignment: Alignment.topLeft,
-                      child: Image.asset(
-                        "assets/logo/arrow.png",
-                        height: 20,
+                      child: InkWell(
+                        onTap: () {
+                          Navigator.pop(context);
+                        },
+                        child: Image.asset(
+                          "assets/logo/arrow.png",
+                          height: 20,
+                        ),
                       ),
                     ),
                     Image.asset(
@@ -146,7 +151,11 @@ class _ReadyForSelfie2ScreenState extends State<ReadyForSelfie2Screen> {
                     SizedBox(
                       height: 3.h,
                     ),
-                    buttonWidget(7, 90, "Continue")
+                    InkWell(
+                        onTap: () {
+                          Get.to(MySubscriptionScreen());
+                        },
+                        child: buttonWidget(7, 90, "Capture"))
                   ]),
             ),
           ),

@@ -1,8 +1,10 @@
 import 'dart:async';
 
+import 'package:darkmodeapp/screens/education.dart';
 import 'package:darkmodeapp/utils/main_color.dart';
 import 'package:darkmodeapp/widgets/button_widget.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 
@@ -46,31 +48,39 @@ class _SmokeScreenState extends State<SmokeScreen> {
               padding: const EdgeInsets.symmetric(horizontal: 10),
               child: Row(
                 children: [
-                  Icon(Icons.arrow_back_ios_new),
-                  Expanded(
-                    child: Align(
-                      alignment: Alignment.center,
-                      child: Text(
-                        'Smoking',
-                        style: GoogleFonts.quicksand(
-                          textStyle: TextStyle(
-                            color: Color(0xffffffff),
-                            fontWeight: FontWeight.w600,
-                            fontSize: 18.sp,
-                          ),
-                        ),
+                  InkWell(
+                    onTap: () {
+                      Navigator.pop(context);
+                    },
+                    child: Image.asset(
+                      "assets/logo/arrow.png",
+                      height: 22,
+                    ),
+                  ),
+                  Spacer(),
+                  Text(
+                    'Smoking',
+                    style: GoogleFonts.quicksand(
+                      textStyle: TextStyle(
+                        color: Color(0xffffffff),
+                        fontWeight: FontWeight.w600,
+                        fontSize: 18.sp,
                       ),
                     ),
                   ),
+                  Spacer(),
                 ],
               ),
             ),
             SizedBox(height: 2.h),
-            Image.asset(
+            Center(
+                child: Image.asset(
               "assets/logo/vividlogo.png",
               height: 9.3.h,
+            )),
+            SizedBox(
+              height: 4.h,
             ),
-            SizedBox(height: 4.h),
             Stack(children: [
               Align(
                   alignment: Alignment.bottomCenter,
@@ -181,7 +191,7 @@ class _SmokeScreenState extends State<SmokeScreen> {
                         ),
                         InkWell(
                             onTap: () {
-                              // Get.to(DOBScreen());
+                              Get.to(EducationVividScreen());
                             },
                             child: buttonWidget(.7.h, 20.7.w, "Save")),
                       ]))),
