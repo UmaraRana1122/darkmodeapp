@@ -1,6 +1,7 @@
 import 'package:darkmodeapp/screens/settings.dart';
 import 'package:darkmodeapp/utils/main_color.dart';
 import 'package:darkmodeapp/widgets/button_widget.dart';
+import 'package:darkmodeapp/widgets/my_inkwell.dart';
 import 'package:darkmodeapp/widgets/prefrence_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -43,9 +44,14 @@ class _PreferenceScreenState extends State<PreferenceScreen> {
                       children: [
                         Row(
                           children: [
-                            Image.asset(
-                              "assets/logo/arrow.png",
-                              height: 20,
+                            MyInkWell(
+                              onTap: () {
+                                Navigator.pop(context);
+                              },
+                              child: Image.asset(
+                                "assets/logo/arrow.png",
+                                height: 20,
+                              ),
                             ),
                             Spacer(),
                             Text(

@@ -18,11 +18,10 @@ class CustomRowItem extends StatelessWidget {
       child: Container(
         height: 43,
         padding: const EdgeInsets.all(8),
-        margin: const EdgeInsets.only(bottom: 22),
         decoration: BoxDecoration(
-          color: Color(0xff555555),
-          borderRadius: BorderRadius.circular(15),
-        ),
+            color: Color(0xff555555),
+            borderRadius: BorderRadius.circular(15),
+            border: Border.all(color: Color(0xffCCCCCC))),
         child: InkWell(
           onTap: () {
             Navigator.push(

@@ -257,7 +257,7 @@ class _SelectHeightScreen2State extends State<SelectHeightScreen2> {
                               onTap: () {
                                 Get.to(InterestScreen2());
                               },
-                              child: buttonWidget(6, 90, "Next")),
+                              child: buttonWidget(6, 90, "Save")),
                         ]))),
               ])
             ],

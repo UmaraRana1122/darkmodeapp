@@ -1,6 +1,7 @@
 import 'package:darkmodeapp/screens/sexual_orientation.dart';
 import 'package:darkmodeapp/utils/main_color.dart';
 import 'package:darkmodeapp/widgets/button_widget.dart';
+import 'package:darkmodeapp/widgets/my_inkwell.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
@@ -52,7 +53,16 @@ class RelationsGoalsState extends State<RelationsGoals> {
                 padding: const EdgeInsets.symmetric(horizontal: 10),
                 child: Row(
                   children: [
-                    Icon(Icons.arrow_back_ios_new),
+                    MyInkWell(
+                        onTap: () {
+                          Navigator.pop(context);
+                        },
+                        child: Align(
+                            alignment: Alignment.topRight,
+                            child: Image.asset(
+                              "assets/logo/arrow.png",
+                              height: 24,
+                            ))),
                     Expanded(
                       child: Align(
                         alignment: Alignment.center,

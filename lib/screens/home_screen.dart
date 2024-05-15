@@ -1,16 +1,13 @@
-import 'package:carousel_slider/carousel_slider.dart';
+import 'package:darkmodeapp/screens/Chat_screen.dart';
+import 'package:darkmodeapp/screens/profile_screen.dart';
 import 'package:darkmodeapp/screens/profile_verification.dart';
 import 'package:darkmodeapp/screens/swipe_tinder_cards.dart';
+import 'package:darkmodeapp/screens/user_likes_screen.dart';
 import 'package:darkmodeapp/utils/main_color.dart';
-import 'package:darkmodeapp/widgets/body_container.dart';
 import 'package:darkmodeapp/widgets/button_widget.dart';
-import 'package:darkmodeapp/widgets/my_inkwell.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
-import 'package:google_fonts/google_fonts.dart';
-import 'package:responsive_sizer/responsive_sizer.dart';
 import 'package:swipe_cards/draggable_card.dart';
 import 'package:swipe_cards/swipe_cards.dart';
 
@@ -74,15 +71,6 @@ class _HomeScreenState extends State<HomeScreen> {
     });
   }
 
-  final List<String> imagePaths = [
-    "assets/images/1.png",
-    "assets/images/2.png",
-    "assets/images/3.png",
-  ];
-  late List<Widget> pages;
-
-  GlobalKey<CarouselSliderState> sliderKey = GlobalKey();
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -113,16 +101,16 @@ class _HomeScreenState extends State<HomeScreen> {
                           children: [
                             Image.asset(
                               "assets/icons/logo1.png",
-                              height: 4.h,
+                              height: 40,
                             ),
                             SizedBox(
-                              width: 4.w,
+                              width: 20,
                             ),
                             Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 SizedBox(
-                                  height: 3.h,
+                                  height: 30,
                                 ),
                                 ClipRRect(
                                   borderRadius: BorderRadius.circular(10),
@@ -134,31 +122,27 @@ class _HomeScreenState extends State<HomeScreen> {
                                     ),
                                     child: Padding(
                                       padding: const EdgeInsets.symmetric(
-                                          horizontal: 3),
+                                          horizontal: 20, vertical: 10),
                                       child: Text(
                                         '324.6',
-                                        style: GoogleFonts.quicksand(
-                                          textStyle: TextStyle(
-                                            color: Color(0xff000000),
-                                            fontWeight: FontWeight.w600,
-                                            fontSize: 15.sp,
-                                          ),
+                                        style: TextStyle(
+                                          color: Color(0xff000000),
+                                          fontWeight: FontWeight.w600,
+                                          fontSize: 15,
                                         ),
                                       ),
                                     ),
                                   ),
                                 ),
                                 SizedBox(
-                                  height: .4.h,
+                                  height: 2,
                                 ),
                                 Text(
                                   '0.125',
-                                  style: GoogleFonts.quicksand(
-                                    textStyle: TextStyle(
-                                      color: Color(0xff6FC02F),
-                                      fontWeight: FontWeight.w600,
-                                      fontSize: 14.sp,
-                                    ),
+                                  style: TextStyle(
+                                    color: Color(0xff6FC02F),
+                                    fontWeight: FontWeight.w600,
+                                    fontSize: 14,
                                   ),
                                 ),
                               ],
@@ -166,116 +150,14 @@ class _HomeScreenState extends State<HomeScreen> {
                             Spacer(),
                             Image.asset(
                               "assets/icons/vivid1.png",
-                              height: 2.5.h,
+                              height: 25,
                             ),
                             Spacer(
                               flex: 2,
                             ),
-                            GestureDetector(
-                              onTap: () {
-                                showModalBottomSheet(
-                                  context: context,
-                                  isScrollControlled: true,
-                                  builder: (BuildContext context) {
-                                    return Container(
-                                        height:
-                                            MediaQuery.of(context).size.height *
-                                                0.75,
-                                        width:
-                                            MediaQuery.of(context).size.width *
-                                                0.90,
-                                        decoration: BoxDecoration(
-                                            color: MainColor.colorWhite,
-                                            borderRadius: BorderRadius.only(
-                                                topLeft: Radius.circular(20),
-                                                topRight: Radius.circular(20))),
-                                        child: Padding(
-                                          padding: const EdgeInsets.all(12.0),
-                                          child: Column(
-                                            children: [
-                                              Align(
-                                                alignment: Alignment.topRight,
-                                                child: InkWell(
-                                                  onTap: () {
-                                                    Navigator.of(context).pop();
-                                                  },
-                                                  child: Image.asset(
-                                                    "assets/logo/close.png",
-                                                    height: 18,
-                                                  ),
-                                                ),
-                                              ),
-                                              Image.asset(
-                                                "assets/logo/Logo.png",
-                                                height: 102,
-                                              ),
-                                              SizedBox(
-                                                height: 1.h,
-                                              ),
-                                              Text(
-                                                'Premium Subscription',
-                                                style: GoogleFonts.quicksand(
-                                                  textStyle: TextStyle(
-                                                    color: Color(0xffff0000),
-                                                    fontWeight: FontWeight.w600,
-                                                    fontSize: 18.sp,
-                                                  ),
-                                                ),
-                                              ),
-                                              SizedBox(
-                                                height: 1.h,
-                                              ),
-                                              Text(
-                                                textAlign: TextAlign.center,
-                                                'Lorem Ipsum is simply dummy text of the \nprinting and typesetting',
-                                                style: GoogleFonts.quicksand(
-                                                  textStyle: TextStyle(
-                                                    color: Color(0xff2b2b2b),
-                                                    fontWeight: FontWeight.w500,
-                                                    fontSize: 14.sp,
-                                                  ),
-                                                ),
-                                              ),
-                                              SizedBox(
-                                                height: 2.h,
-                                              ),
-                                              Row(
-                                                mainAxisAlignment:
-                                                    MainAxisAlignment
-                                                        .spaceBetween,
-                                                children: [
-                                                  MyWidget(),
-                                                ],
-                                              ),
-                                              SizedBox(
-                                                height: 2.h,
-                                              ),
-                                              _buildRow("Unlimited Likes"),
-                                              _buildRow("New Feature Added"),
-                                              _buildRow("Exciting Updates"),
-                                              _buildRow("Exclusive Access"),
-                                              _buildRow("Enhanced Performance"),
-                                              _buildRow("Special Offer Inside"),
-                                              SizedBox(
-                                                height: 2.h,
-                                              ),
-                                              InkWell(
-                                                  onTap: () {
-                                                    Get.to(
-                                                        ProfileVerificationScreen());
-                                                  },
-                                                  child: buttonWidget(
-                                                      6, 80, "Subscribe"))
-                                            ],
-                                          ),
-                                        ));
-                                  },
-                                );
-                              },
-                              child: Image.asset(
-                                "assets/icons/filter.png",
-                                height: 2.5.h,
-                              ),
+                            Image.asset(
+                              "assets/icons/filter.png",
+                              height: 25,
                             ),
                           ],
                         ),
@@ -319,46 +201,45 @@ class _HomeScreenState extends State<HomeScreen> {
                           ),
                         ),
                         SizedBox(
-                          height: 2.h,
+                          height: 20,
                         ),
                         Row(
                           children: [
                             Text(
                               "Jessica M",
-                              style: GoogleFonts.quicksand(
-                                textStyle: TextStyle(
-                                    color: Colors.white,
-                                    fontWeight: FontWeight.w600,
-                                    fontSize: 16.sp),
+                              style: TextStyle(
+                                color: Colors.white,
+                                fontWeight: FontWeight.w600,
+                                fontSize: 16,
                               ),
                             ),
                             SizedBox(
-                              width: 3.w,
+                              width: 20,
                             ),
                             Image.asset(
                               "assets/logo/verify.png",
-                              height: 2.h,
+                              height: 20,
                             ),
                             Spacer(),
                             Text(
                               "17 KM Away",
-                              style: GoogleFonts.quicksand(
-                                textStyle: TextStyle(
-                                    color: Colors.white,
-                                    fontWeight: FontWeight.w600,
-                                    fontSize: 16.sp),
+                              style: TextStyle(
+                                color: Colors.white,
+                                fontWeight: FontWeight.w600,
+                                fontSize: 16,
                               ),
                             ),
                           ],
                         ),
-                        rowWidget("assets/icons/height.png", "165 CM (5’ 55”)",
+                        SizedBox(height: 20),
+                        _rowWidget("assets/icons/height.png", "165 CM (5’ 55”)",
                             "assets/icons/abroad.png", "Will move abroad"),
-                        rowWidget(
+                        _rowWidget(
                             "assets/icons/child.png",
                             "Doesn’t have Child",
                             "assets/icons/calender.png",
                             "Marriage in 1-2 Years"),
-                        rowWidget("assets/icons/married.png", "Never Married",
+                        _rowWidget("assets/icons/married.png", "Never Married",
                             "assets/icons/age.png", "18 Year"),
                       ],
                     ),
@@ -373,17 +254,42 @@ class _HomeScreenState extends State<HomeScreen> {
   }
 }
 
-class ImagePlaceholder extends StatelessWidget {
-  final String? imagePath;
-  const ImagePlaceholder({super.key, this.imagePath});
-
-  @override
-  Widget build(BuildContext context) {
-    return Image.asset(
-      imagePath!,
-    );
-  }
+Widget _rowWidget(String icon1, String text1, String icon2, String text2) {
+  return Padding(
+    padding: const EdgeInsets.symmetric(vertical: 10),
+    child: Row(
+      children: [
+        Image.asset(
+          icon1,
+          height: 20,
+        ),
+        SizedBox(width: 10),
+        Text(
+          text1,
+          style: TextStyle(
+            color: Colors.white,
+            fontSize: 14,
+          ),
+        ),
+        Spacer(),
+        Image.asset(
+          icon2,
+          height: 20,
+        ),
+        SizedBox(width: 10),
+        Text(
+          text2,
+          style: TextStyle(
+            color: Colors.white,
+            fontSize: 14,
+          ),
+        ),
+      ],
+    ),
+  );
 }
+
+
 
 class MyWidget extends StatefulWidget {
   @override
@@ -503,28 +409,4 @@ class _MyWidgetState extends State<MyWidget> {
       ],
     );
   }
-}
-
-Widget _buildRow(String text) {
-  return Row(
-    children: [
-      Image.asset(
-        "assets/logo/mark.png",
-        height: 20,
-      ),
-      SizedBox(
-        width: 10,
-      ),
-      Text(
-        text,
-        style: GoogleFonts.quicksand(
-          textStyle: TextStyle(
-            color: Color(0xff2b2b2b),
-            fontWeight: FontWeight.w500,
-            fontSize: 16.sp,
-          ),
-        ),
-      ),
-    ],
-  );
 }

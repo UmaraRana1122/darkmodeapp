@@ -6,6 +6,7 @@ import 'package:darkmodeapp/screens/aboutme_screen.dart';
 import 'package:darkmodeapp/screens/alcohol_screen.dart';
 import 'package:darkmodeapp/screens/children_screen.dart';
 import 'package:darkmodeapp/screens/company_screen.dart';
+import 'package:darkmodeapp/screens/dashboardScreen.dart';
 import 'package:darkmodeapp/screens/dietary_vivid.dart';
 import 'package:darkmodeapp/screens/dietry_screen.dart';
 import 'package:darkmodeapp/screens/dob_screen.dart';
@@ -45,6 +46,7 @@ import 'package:darkmodeapp/screens/smoking_screen.dart';
 import 'package:darkmodeapp/screens/spalsh_screen.dart';
 import 'package:darkmodeapp/screens/splash1_screen.dart';
 import 'package:darkmodeapp/screens/upload.dart';
+import 'package:darkmodeapp/screens/user_likes_screen.dart';
 import 'package:darkmodeapp/screens/welcome_screen.dart';
 import 'package:darkmodeapp/screens/workout_screen.dart';
 import 'package:darkmodeapp/screens/workout_vivid.dart';
@@ -69,7 +71,7 @@ class MyApp extends StatelessWidget {
           theme: ThemeDataStyle.light, // Light/Default mode styles
           darkTheme: ThemeDataStyle.dark,
           debugShowCheckedModeBanner: false,
-          home: ResultScreen(),
+          home: DashboardScreen(),
         );
       },
     );

@@ -1,6 +1,7 @@
 import 'dart:ui';
 
 import 'package:darkmodeapp/utils/main_color.dart';
+import 'package:darkmodeapp/widgets/my_inkwell.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -45,9 +46,14 @@ class _ChatScreenState extends State<ChatScreen> {
                         mainAxisAlignment: MainAxisAlignment.start,
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          Image.asset(
-                            "assets/logo/arrow.png",
-                            height: 22,
+                          MyInkWell(
+                            onTap: () {
+                              Navigator.pop(context);
+                            },
+                            child: Image.asset(
+                              "assets/logo/arrow.png",
+                              height: 22,
+                            ),
                           ),
                           Spacer(),
                           Column(

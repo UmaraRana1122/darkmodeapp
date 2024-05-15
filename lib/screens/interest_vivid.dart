@@ -240,7 +240,7 @@ class _InterestScreen2State extends State<InterestScreen2> {
                               onTap: () {
                                 Get.to(RelationsGoals());
                               },
-                              child: buttonWidget(7, 90, "Next")),
+                              child: buttonWidget(7, 90, "Save")),
 
                           // Padding(
                           //   padding: const EdgeInsets.all(17.0),
