@@ -11,7 +11,6 @@ import 'package:responsive_sizer/responsive_sizer.dart';
 import 'package:get/get.dart';
 import 'dart:convert' as convert;
 
-import '../Apiserver/allurls.dart';
 
 class ForgetUserName extends StatefulWidget {
   const ForgetUserName({Key? key}) : super(key: key);

@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "816071016852",
+    "project_id": "darkmode-5a1e5",
+    "storage_bucket": "darkmode-5a1e5.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:816071016852:android:668a98f271564625ad8f81",
+        "android_client_info": {
+          "package_name": "com.techbolic.darkmodeapp"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBzo6aWHgOHj2UAtIBE_Mcci6_Rj_gIJX8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
